@@ -1,0 +1,20 @@
+{
+  "name": "Dark Blue",
+  "appearance_mode": "dark",
+  "colors": {
+    "primary_color": ["#1a237e", "#3949ab"],         
+    "secondary_color": ["#0d133d", "#23295a"],     
+    "accent_color": ["#00bcd4", "#0097a7"],        
+    "fg_color": ["#212121", "#263238"],            
+    "bg_color": ["#121212", "#1a1a1a"],           
+    "text_color": ["#ffffff", "#e3f2fd"],           
+    "button_color": ["#3949ab", "#1a237e"],         
+    "button_hover_color": ["#5c6bc0", "#283593"],    
+    "entry_color": ["#23295a", "#3949ab"],          
+    "entry_border_color": ["#00bcd4", "#0097a7"],   
+    "progress_color": ["#00bcd4", "#0097a7"],        
+    "scrollbar_color": ["#23295a", "#3949ab"],       
+    "frame_color": ["#23295a", "#3949ab"],         
+    "border_color": ["#00bcd4", "#0097a7"]         
+  }
+}
