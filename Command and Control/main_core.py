@@ -1,11 +1,12 @@
 import sys
 import json
 from pathlib import Path
-from PyQt6.QtCore import Qt, QPoint
+from PyQt6.QtCore import Qt, QPoint, pyqtSignal, Qt
 from PyQt6.QtGui import QIcon, QPixmap, QFont, QPalette, QColor, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QMainWindow, QMessageBox
 )
+from clickable_label import ClickableLabel as QLabel
 
 ## Import custom widgets
 from control_buttons import ControlButtons
@@ -54,8 +55,8 @@ class CustomTitleBar(QWidget):
         h_layout.setSpacing         (5)            
               
         ### LOGO
-        logo = QLabel()
-        pixmap = QPixmap(str(LOGO_PATH))
+        logo    = QLabel()
+        pixmap  = QPixmap(str(LOGO_PATH))
         
         if pixmap.isNull():
             print(f"WARNING: Logo image not found at: {LOGO_PATH}")
@@ -65,12 +66,13 @@ class CustomTitleBar(QWidget):
                                    Qt.TransformationMode.SmoothTransformation
                                    )
         
-        logo.setPixmap      (pixmap)
-        logo.setFixedSize   (80, 32)
-        logo.setStyleSheet  ("background: transparent;")
-        h_layout.addWidget  (logo, alignment = Qt.AlignmentFlag.AlignVCenter)
+        logo.setPixmap       (pixmap)
+        logo.setFixedSize    (80, 32)
+        logo.setStyleSheet   ("background: transparent;")
+        h_layout.addWidget   (logo, alignment = Qt.AlignmentFlag.AlignVCenter)
         logo.setCursor       (Qt.CursorShape.PointingHandCursor)
         logo.setFocusPolicy  (Qt.FocusPolicy.NoFocus)
+        logo.clicked.connect (self.on_logo_clicked)
         
         h_layout.addStretch(1)
 
@@ -88,6 +90,7 @@ class CustomTitleBar(QWidget):
             btn.setFixedSize    (16, 16)
             btn.setStyleSheet   (f"border-radius:8px; background-color:{color}; border:none;")
             btn.setToolTip      (tooltip)
+            
             return btn
 
         close_btn = make_circle_btn ("#D32F2F", "Close")
@@ -104,7 +107,9 @@ class CustomTitleBar(QWidget):
         
         self._dragActive = False
     
-
+    def on_logo_clicked(self):
+        self._parent.LOGO_pressed()
+        
     def on_close(self):
         self._parent.request_exit()
 
@@ -168,6 +173,12 @@ class TelemetryDashboard(QMainWindow):
         self.installEventFilter(self)
         
         self.showFullScreen()
+        
+    def LOGO_pressed(self):
+        QMessageBox.information(
+            self, "AMBOT Adaptive Machine Bot for Operations and Tasks",
+            "Copyright 2025. All rights reserved.\n\n An advanced autonomous prototype robot equipped to perform versatile operational tasks and adaptive exploratory functions.\n\nSofware Developed by Francis Mike John Camogao, 2025.",
+        )
 
     # ESC or window close
     def request_exit(self):
