@@ -6,10 +6,10 @@ from PyQt6.QtGui import QIcon, QPixmap, QFont, QPalette, QColor, QKeySequence
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QMainWindow, QMessageBox
 )
-from clickable_label import ClickableLabel as QLabel
 
 ## Import custom widgets
 from control_buttons import ControlButtons
+from clickable_label import ClickableLabel as QLabel
 
 # Paths
 ASSETS_PATH = Path(__file__).resolve().parent / "assets"
@@ -220,3 +220,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
