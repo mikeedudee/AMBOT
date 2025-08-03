@@ -1,0 +1,17 @@
+{
+    "window": "#2d2d2d",
+    "windowText": "#ffffff",
+    "base": "#232323",
+    "alternateBase": "#373737",
+    "toolTipBase": "#ffffff",
+    "toolTipText": "#ffffff",
+    "text": "#ffffff",
+    "button": "#353535",
+    "buttonText": "#ffffff",
+    "brightText": "#ff0000",
+    "link": "#2a82da",
+    "highlight": "#2a82da",
+    "highlightedText": "#000000",
+    "font_family": "Segoe UI",
+    "font_size": 10
+}
