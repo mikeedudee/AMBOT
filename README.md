@@ -63,7 +63,7 @@ Otherwise, AETHER can generate one or describe the architecture in text if you w
 ## Project Members
 - Camogao, Francis Mike John D.
 - Henolos, Archie Leo L.
-- - Confesor, Kyle S.
+- Confesor, Kyle S.
 - Macadine, Kobe Brylle S.
 - Mendaros, Cindy S.
 
