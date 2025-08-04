@@ -1,8 +1,8 @@
 <p align="center">
-  <img width="280" src="https://github.com/user-attachments/assets/9a36d182-860f-4dbd-9241-115a68f3403f" alt="AMBOT Logo" />
+  <img width="800" src="https://github.com/mikeedudee/AMBOT-Project/blob/14df4feb652c66d5d428a8ec12799de9754aa237/Command%20and%20Control/assets/images/AMBOT%20Logo%20Transparent%20BG%20small.png" alt="AMBOT Logo" />
 </p>
 
-<h1 align="center">AMBOT-Project</h1>
+<h1 align="center">AMBOT</h1>
 <p align="center"><b>Adaptive Machine Bot for Operations and Tasks</b></p>
 <p align="center">
   <em>An advanced autonomous prototype robot equipped to perform versatile operational tasks and adaptive exploratory functions.</em>
@@ -61,17 +61,9 @@ Otherwise, AETHER can generate one or describe the architecture in text if you w
 ---
 
 ## Project Members
-
-**Project Lead / Developer**
-- Camogao, Francis Mike John D.
-
-**Software Developers & Programmers**
 - Camogao, Francis Mike John D.
 - Henolos, Archie Leo L.
-- Confesor, Kyle S.
-
-**Robotics & Systems Engineering**
-- Henolos, Archie Leo L.
+- - Confesor, Kyle S.
 - Macadine, Kobe Brylle S.
 - Mendaros, Cindy S.
 
@@ -120,7 +112,7 @@ If you want AETHER to recommend a license, specify your intentions (open/closed,
 
 ---
 
-## Acknowledgments
+<!-- ## Acknowledgments -->
 
 - Special thanks to all contributors, mentors, and collaborators supporting the AMBOT Project.
 <!-- Add sponsors, academic advisors, or institutions if needed -->
