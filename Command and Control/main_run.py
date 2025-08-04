@@ -8,8 +8,9 @@ from PyQt6.QtWidgets import (
 )
 
 ## Import custom widgets
-from control_buttons import ControlButtons
-from clickable_label import ClickableLabel as QLabel
+from cores import Dialouge_Boxes, ClickableLabel as QLabel, BottomToolbar
+from cores.system_status import SystemStatusWidget
+from cores.status_store import status_store
 
 # Paths
 ASSETS_PATH = Path(__file__).resolve().parent / "assets"
@@ -36,6 +37,7 @@ def apply_palette(app, theme):
     palette.setColor(QPalette.ColorRole.Link,             QColor(theme["link"]))
     palette.setColor(QPalette.ColorRole.Highlight,        QColor(theme["highlight"]))
     palette.setColor(QPalette.ColorRole.HighlightedText,  QColor(theme["highlightedText"]))
+    
     app.setPalette(palette)
 
 def apply_font(app, theme):
@@ -47,8 +49,8 @@ class CustomTitleBar(QWidget):
         super().__init__(parent)
         self._parent = parent
         
-        self.setFixedHeight (36)
-        self.setStyleSheet  ("background-color: #111a5b;")  # Main background color
+        self.setFixedHeight         (36)
+        self.setStyleSheet          ("background-color: #111a5b;")  # Main background color
 
         h_layout = QHBoxLayout      (self)
         h_layout.setContentsMargins (10, 0, 10, 0)  
@@ -108,10 +110,12 @@ class CustomTitleBar(QWidget):
         self._dragActive = False
     
     def on_logo_clicked(self):
-        self._parent.LOGO_pressed()
+        if Dialouge_Boxes.LOGO_pressed(self._parent):
+            Dialouge_Boxes.LOGO_pressed(self._parent)
         
     def on_close(self):
-        self._parent.request_exit()
+        if Dialouge_Boxes.request_exit(self._parent):
+            self._parent.close()
 
     def on_maximize(self):
         if self._parent.isMaximized():
@@ -148,7 +152,6 @@ class TelemetryDashboard(QMainWindow):
         self.setWindowFlag  (Qt.WindowType.FramelessWindowHint)
         self.setWindowTitle ("AMBOT Command and Control")
         self.setWindowIcon  (QIcon(str(ICON_PATH / 'AMBOT_main_plain_icon_w.ico')))
-        #self.setGeometry    (100, 100, 1200, 700)
         
         # Layout with title bar and main area
         main_widget = QWidget()
@@ -162,6 +165,19 @@ class TelemetryDashboard(QMainWindow):
         # Main body (replace this with your functional widgets)
         body = QWidget()
         body.setStyleSheet("background-color: #222;")
+        body_layout = QHBoxLayout(body)
+        body_layout.setContentsMargins(0, 0, 0, 0)
+        body_layout.setSpacing(0)
+
+        # Add SystemStatusWidget at the top-left
+        sensor_labels = ["LiDAR", "MS5611", "BNO085-9DOF", "GPS", "THERMISTOR", "CAMERA"]
+        servo_labels = [f"SERVO {i+1}" for i in range(7)]
+        self.system_status = SystemStatusWidget(sensor_labels, servo_labels)
+        body_layout.addWidget(self.system_status, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
+        self.system_status.set_status(status_store.sensor_states, status_store.servo_states)
+        # Stretch for other widgets in the body
+        body_layout.addStretch(1)
+
         main_layout.addWidget(body)
 
         self.setCentralWidget(main_widget)
@@ -174,28 +190,15 @@ class TelemetryDashboard(QMainWindow):
         
         self.showFullScreen()
         
-    def LOGO_pressed(self):
-        QMessageBox.information(
-            self, "AMBOT Adaptive Machine Bot for Operations and Tasks",
-            "Copyright 2025. All rights reserved.\n\n An advanced autonomous prototype robot equipped to perform versatile operational tasks and adaptive exploratory functions.\n\nSofware Developed by Francis Mike John Camogao, 2025.",
-        )
-
-    # ESC or window close
-    def request_exit(self):
-        reply = QMessageBox.question(
-            self, 'Exit',
-            'Are you sure you want to exit?',
-            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-            QMessageBox.StandardButton.No
-        )
-        if reply == QMessageBox.StandardButton.Yes:
-            self.close()
+        self.bottom_toolbar = BottomToolbar(self)
+        main_layout.addWidget(self.bottom_toolbar)
 
     # Allow ESC to trigger close
     def eventFilter(self, obj, event):
         if event.type() == event.Type.KeyPress:
             if event.key() == Qt.Key.Key_Escape:
-                self.request_exit()
+                if Dialouge_Boxes.request_exit(self):
+                    self.close()
                 return True
             elif event.key() == Qt.Key.Key_F11:
                 # F11 toggles maximized/fullscreen
@@ -207,12 +210,13 @@ class TelemetryDashboard(QMainWindow):
             
         return super().eventFilter(obj, event)
 
+
 def main():
-    app = QApplication(sys.argv)
-    QApplication.setStyle("Fusion")
-    theme = load_theme(THEME_PATH)
-    apply_palette(app, theme)
-    apply_font(app, theme)
+    app = QApplication      (sys.argv)
+    QApplication.setStyle   ("Fusion")
+    theme = load_theme      (THEME_PATH)
+    apply_palette           (app, theme)
+    apply_font              (app, theme)
 
     dashboard = TelemetryDashboard(theme)
     dashboard.show()
@@ -220,4 +224,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
