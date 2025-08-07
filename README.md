@@ -1,3 +1,4 @@
+🛡 License: Proprietary — usage restricted. Request access for research or collaboration.
 <p align="center">
   <img width="800" src="https://github.com/mikeedudee/AMBOT-Project/blob/14df4feb652c66d5d428a8ec12799de9754aa237/Command%20and%20Control/assets/images/AMBOT%20Logo%20Transparent%20BG%20small.png" alt="AMBOT Logo" />
 </p>
