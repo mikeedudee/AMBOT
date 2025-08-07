@@ -56,7 +56,7 @@ Otherwise, AETHER can generate one or describe the architecture in text if you w
 ## Hardware Specifications
 
 <p align="center">
-  <img width="850" src="https://github.com/user-attachments/assets/af4ca83f-1c2f-4e8b-87f0-e914b74865b1" alt="AMBOT Specifications" />
+  <img width="2694" height="900" alt="AMBOT Specifications" src="https://github.com/user-attachments/assets/5f33b11e-0dba-4860-a72f-469b8897ee67" />
 </p>
 
 ---
