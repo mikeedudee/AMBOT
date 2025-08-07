@@ -2,7 +2,7 @@ END-USER LICENSE AGREEMENT (EULA)
 Version 1.0  
 Effective Date: [August 7, 2025]
 
-This End-User License Agreement (“Agreement”) is a legal agreement between you (the “User”) and the AMBOT Development Team, including its creator Mikee D. (“Licensor”), for the use of the AMBOT software, files, documentation, and related intellectual property (collectively, the “Software”), made available through the GitHub repository located at https://github.com/mikeedudee/AMBOT (“Repository”).
+This End-User License Agreement (“Agreement”) is a legal agreement between you (the “User”) and the AMBOT Development Team (“Licensor”), for the use of the AMBOT software, files, documentation, and related intellectual property (collectively, the “Software”), made available through the GitHub repository located at https://github.com/mikeedudee/AMBOT (“Repository”).
 
 By accessing, viewing, downloading, copying, or otherwise using any part of the Software, you agree to be bound by the terms of this Agreement. If you do not agree to the terms of this Agreement, do not access, download, or use the Software.
 
@@ -73,10 +73,10 @@ This Agreement shall be governed by and construed in accordance with the laws of
 
 To request access, permission, or additional licensing terms, please contact:
 
-**Mikee D.**  
+**Francis Mike John Camogao**  
 Email: francismikejohn.camogao@gmail.com  
 Project Repository: https://github.com/mikeedudee/AMBOT
 
 ---
 
-© 2025 Mikee D. and the AMBOT Development Team. All rights reserved.
+© 2025 AMBOT Development Team. All rights reserved.
